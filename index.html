@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有趣的小世界</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brown-dark: #5D4037;
+            --brown-medium: #8D6E63;
+            --brown-light: #D7CCC8;
+            --cream: #F5F0E1;
+            --green-light: #A5D6A7;
+            --pink-light: #F8BBD9;
+            --yellow-light: #FFF59D;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--brown-light) 100%);
+            min-height: 100vh;
+            color: var(--brown-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 3.5rem;
+            color: var(--brown-dark);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(93, 64, 55, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--brown-medium);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .pet-decoration {
+            position: absolute;
+            font-size: 4rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .pet-decoration.cat1 {
+            top: 20px;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .pet-decoration.dog1 {
+            top: 30px;
+            right: 5%;
+            animation-delay: 0.5s;
+        }
+
+        .pet-decoration.cat2 {
+            bottom: 20px;
+            left: 10%;
+            animation-delay: 1s;
+        }
+
+        .pet-decoration.dog2 {
+            bottom: 30px;
+            right: 10%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .intro-section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 10px 40px rgba(93, 64, 55, 0.15);
+            position: relative;
+        }
+
+        .intro-section::before {
+            content: '🌿';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            font-size: 2.5rem;
+        }
+
+        .intro-section::after {
+            content: '🌸';
+            position: absolute;
+            bottom: -20px;
+            right: 30px;
+            font-size: 2.5rem;
+        }
+
+        .intro-section h2 {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            color: var(--brown-dark);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .intro-section p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--brown-medium);
+        }
+
+        .content-section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--brown-dark);
+            position: relative;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '✿';
+            margin: 0 15px;
+            color: var(--pink-light);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(93, 64, 55, 0.12);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(93, 64, 55, 0.2);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--green-light), var(--pink-light), var(--yellow-light));
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            color: var(--brown-dark);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--brown-medium);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background: var(--cream);
+            color: var(--brown-medium);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 60px;
+            border-top: 3px dashed var(--brown-light);
+        }
+
+        footer p {
+            color: var(--brown-medium);
+            font-size: 1rem;
+        }
+
+        .footer-pets {
+            font-size: 2.5rem;
+            margin: 20px 0;
+            letter-spacing: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .pet-decoration {
+                font-size: 2.5rem;
+            }
+
+            .intro-section {
+                padding: 35px 25px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="pet-decoration cat1">🐱</div>
+            <div class="pet-decoration dog1">🐶</div>
+            <h1>✨ 有趣的小世界 ✨</h1>
+            <p class="subtitle">
+                这里会分享一些我日常比较感兴趣的且比较有趣的小东西，
+                以及一些我灵感突现创作的有趣的小网站
+            </p>
+            <div class="pet-decoration cat2">😺</div>
+            <div class="pet-decoration dog2">🐕</div>
+        </header>
+
+        <section class="intro-section">
+            <h2>🌻 关于这里</h2>
+            <p>
+                欢迎来到这个温暖的小角落！在这里，我会分享生活中发现的有趣事物，
+                记录那些让我眼前一亮的小创意，以及我在灵感迸发时创作的各种小网站。
+                希望这些分享能给你带来一点快乐和启发～
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">精彩内容</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3>有趣的发现</h3>
+                    <p>分享日常生活中遇到的有趣小物件、新奇的设计、暖心的故事，以及各种让生活变得更美好的小发现。</p>
+                    <span class="card-tag">生活趣闻</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">💡</div>
+                    <h3>灵感创作</h3>
+                    <p>记录灵感突现的时刻，将脑海中的创意变成现实，创作各种有趣的小网站和互动体验。</p>
+                    <span class="card-tag">创意作品</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3>小网站展示</h3>
+                    <p>展示我创作的各种有趣小网站，每个都有独特的功能和设计，希望能给你带来惊喜！</p>
+                    <span class="card-tag">网站作品</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">📚</div>
+                    <h3>学习与成长</h3>
+                    <p>分享学习过程中的心得与体会，记录技术成长的点滴，和大家一起进步。</p>
+                    <span class="card-tag">技术分享</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🌱</div>
+                    <h3>美好生活</h3>
+                    <p>记录生活中的小确幸，分享让生活更美好的小技巧和心得体会。</p>
+                    <span class="card-tag">生活随笔</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🎪</div>
+                    <h3>趣味互动</h3>
+                    <p>创作有趣的互动体验，让访问者可以参与进来，一起享受创造的乐趣。</p>
+                    <span class="card-tag">互动体验</span>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-pets">🐱 🐶 😺 🐕 🐈 🐩</div>
+            <p>感谢你的来访！愿你在这里找到有趣和快乐 🌸</p>
+            <p style="margin-top: 15px; font-size: 0.9rem;">Made with ❤️ in a cozy corner</p>
+        </footer>
+    </div>
+</body>
+</html>
